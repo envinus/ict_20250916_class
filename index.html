@@ -1,198 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Gateway - Your Portal to the Internet</title>
+    <title>스마트 음식 추천기 🧠🍽️</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: #333;
-            line-height: 1.6;
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             min-height: 100vh;
+            padding: 20px;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            text-align: center;
-            padding: 40px 0;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            animation: fadeInDown 0.8s ease-out;
-        }
-        
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        .subtitle {
-            font-size: 1.3rem;
-            font-weight: 300;
-            color: #555;
-        }
-        
-        .search-container {
-            margin: 30px auto;
-            max-width: 600px;
-            text-align: center;
-            animation: fadeIn 1.2s ease-out;
-        }
-        
-        .search-box {
-            width: 100%;
-            padding: 18px 25px;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 50px;
-            outline: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            background: rgba(255, 255, 255, 0.9);
-            transition: all 0.3s ease;
-        }
-        
-        .search-box:focus {
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            transform: translateY(-2px);
-        }
-        
-        .sites-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-        
-        .site-card {
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 25px 15px;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            transition: all 0.4s ease;
-            text-decoration: none;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 180px;
-            overflow: hidden;
-            position: relative;
-            animation: fadeInUp 0.8s ease-out;
-            animation-fill-mode: both;
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
         }
         
-        .site-card:nth-child(1) { animation-delay: 0.1s; }
-        .site-card:nth-child(2) { animation-delay: 0.2s; }
-        .site-card:nth-child(3) { animation-delay: 0.3s; }
-        .site-card:nth-child(4) { animation-delay: 0.4s; }
-        .site-card:nth-child(5) { animation-delay: 0.5s; }
-        .site-card:nth-child(6) { animation-delay: 0.6s; }
-        .site-card:nth-child(7) { animation-delay: 0.7s; }
-        .site-card:nth-child(8) { animation-delay: 0.8s; }
-        .site-card:nth-child(9) { animation-delay: 0.9s; }
-        .site-card:nth-child(10) { animation-delay: 1.0s; }
-        .site-card:nth-child(11) { animation-delay: 1.1s; }
-        .site-card:nth-child(12) { animation-delay: 1.2s; }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
         
-        .site-card::before {
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .option-group {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .option-group:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .option-group h3 {
+            color: #333;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .option-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .option-tag {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px solid transparent;
+            color: #495057;
+            padding: 10px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option-tag::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #6a11cb, #2575fc);
-            transform: translateX(-100%);
-            transition: transform 0.5s ease;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
         }
         
-        .site-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
-            text-decoration: none;
-            color: #6a11cb;
+        .option-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        .site-card:hover::before {
-            transform: translateX(0);
+        .option-tag:hover::before {
+            left: 100%;
         }
         
-        .site-icon {
-            width: 70px;
-            height: 70px;
-            margin-bottom: 15px;
-            border-radius: 50%;
-            object-fit: cover;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .option-tag.selected {
+            background: linear-gradient(135deg, #48cae4, #0077b6);
+            color: white;
+            border-color: #0077b6;
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(72, 202, 228, 0.4);
         }
         
-        .site-card:hover .site-icon {
-            transform: scale(1.1);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-        
-        .site-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-            transition: all 0.3s ease;
-        }
-        
-        .site-description {
-            font-size: 0.95rem;
-            color: #666;
-            transition: all 0.3s ease;
-        }
-        
-        .site-card:hover .site-description {
-            color: #2575fc;
-        }
-        
-        footer {
+        .recommend-section {
             text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
-            animation: fadeIn 1.5s ease-out;
+            margin-top: 40px;
         }
         
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .recommend-btn {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
         }
         
-        @keyframes fadeInUp {
+        .recommend-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(255, 107, 107, 0.6);
+        }
+        
+        .recommend-btn:disabled {
+            opacity: 0.7;
+            transform: none;
+            cursor: not-allowed;
+        }
+        
+        .result-section {
+            margin-top: 40px;
+            display: none;
+            text-align: center;
+        }
+        
+        .result-section.show {
+            display: block;
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        @keyframes slideUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -203,132 +188,480 @@
             }
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .result-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 40px;
+            border-radius: 25px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
         }
         
+        .result-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: sparkle 3s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+        
+        .result-emoji {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            animation: bounce 1s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .result-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .result-description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .result-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .result-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .loading {
+            display: none;
+            color: #666;
+            font-size: 1.2rem;
+            margin: 30px 0;
+        }
+        
+        .loading.show {
+            display: block;
+        }
+        
+        .loading-dots {
+            display: inline-block;
+            animation: dots 1.5s infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60% { content: '...'; }
+            80%, 100% { content: ''; }
+        }
+        
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+        
+        /* 반응형 */
         @media (max-width: 768px) {
-            .sites-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 15px;
+            .container {
+                padding: 20px;
             }
             
-            h1 {
-                font-size: 2.2rem;
+            .options-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
             
-            .site-card {
-                min-height: 150px;
-                padding: 15px 10px;
+            .header h1 {
+                font-size: 2rem;
             }
             
-            .site-icon {
-                width: 60px;
-                height: 60px;
+            .recommend-btn {
+                padding: 15px 30px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* 플로팅 파티클 */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.7;
+            }
+            50% { 
+                transform: translateY(-100px) rotate(180deg);
+                opacity: 1;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Portal Gateway</h1>
-            <p class="subtitle">Your quick access portal to the internet</p>
-        </header>
-        
-        <div class="search-container">
-            <input type="text" class="search-box" placeholder="Search the web..." id="searchBox">
+        <div class="header">
+            <h1>🧠 스마트 음식 추천기 🍽️</h1>
+            <p>당신의 취향과 상황에 맞는 완벽한 음식을 찾아드려요!</p>
         </div>
         
-        <div class="sites-grid">
-            <a href="https://www.google.com" class="site-card">
-                <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="Google" class="site-icon">
-                <div class="site-name">Google</div>
-                <div class="site-description">Search engine</div>
-            </a>
+        <div class="options-grid">
+            <div class="option-group">
+                <h3>🍽️ 음식 종류</h3>
+                <div class="option-tags">
+                    <span class="option-tag" data-category="cuisine" data-value="korean">한식</span>
+                    <span class="option-tag" data-category="cuisine" data-value="chinese">중식</span>
+                    <span class="option-tag" data-category="cuisine" data-value="japanese">일식</span>
+                    <span class="option-tag" data-category="cuisine" data-value="western">양식</span>
+                    <span class="option-tag" data-category="cuisine" data-value="fusion">퓨전</span>
+                    <span class="option-tag" data-category="cuisine" data-value="fast">패스트푸드</span>
+                </div>
+            </div>
             
-            <a href="https://www.aol.com" class="site-card">
-                <img src="https://s.aolcdn.com/os/ab/img/logos/aol-logo-color.png" alt="AOL" class="site-icon">
-                <div class="site-name">AOL</div>
-                <div class="site-description">News & email</div>
-            </a>
+            <div class="option-group">
+                <h3>🌶️ 맛 선호도</h3>
+                <div class="option-tags">
+                    <span class="option-tag" data-category="taste" data-value="spicy">매운맛</span>
+                    <span class="option-tag" data-category="taste" data-value="sweet">단맛</span>
+                    <span class="option-tag" data-category="taste" data-value="salty">짠맛</span>
+                    <span class="option-tag" data-category="taste" data-value="sour">신맛</span>
+                    <span class="option-tag" data-category="taste" data-value="savory">감칠맛</span>
+                    <span class="option-tag" data-category="taste" data-value="mild">담백함</span>
+                </div>
+            </div>
             
-            <a href="https://www.msn.com" class="site-card">
-                <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BB1e7mXl.img" alt="MSN" class="site-icon">
-                <div class="site-name">MSN</div>
-                <div class="site-description">News & entertainment</div>
-            </a>
+            <div class="option-group">
+                <h3>🍖 주재료</h3>
+                <div class="option-tags">
+                    <span class="option-tag" data-category="ingredient" data-value="meat">고기</span>
+                    <span class="option-tag" data-category="ingredient" data-value="seafood">해산물</span>
+                    <span class="option-tag" data-category="ingredient" data-value="vegetable">채소</span>
+                    <span class="option-tag" data-category="ingredient" data-value="noodle">면류</span>
+                    <span class="option-tag" data-category="ingredient" data-value="rice">밥류</span>
+                    <span class="option-tag" data-category="ingredient" data-value="soup">국물</span>
+                </div>
+            </div>
             
-            <a href="https://www.youtube.com" class="site-card">
-                <img src="https://www.youtube.com/s/desktop/0581e8e7/img/favicon_144x144.png" alt="YouTube" class="site-icon">
-                <div class="site-name">YouTube</div>
-                <div class="site-description">Video sharing</div>
-            </a>
+            <div class="option-group">
+                <h3>💰 가격대</h3>
+                <div class="option-tags">
+                    <span class="option-tag" data-category="price" data-value="budget">가성비 (1만원 이하)</span>
+                    <span class="option-tag" data-category="price" data-value="moderate">보통 (1-3만원)</span>
+                    <span class="option-tag" data-category="price" data-value="premium">프리미엄 (3만원 이상)</span>
+                </div>
+            </div>
             
-            <a href="https://www.facebook.com" class="site-card">
-                <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yz/r/4WR4ijU4DgI.png" alt="Facebook" class="site-icon">
-                <div class="site-name">Facebook</div>
-                <div class="site-description">Social network</div>
-            </a>
+            <div class="option-group">
+                <h3>⏰ 식사 시간</h3>
+                <div class="option-tags">
+                    <span class="option-tag" data-category="time" data-value="breakfast">아침</span>
+                    <span class="option-tag" data-category="time" data-value="lunch">점심</span>
+                    <span class="option-tag" data-category="time" data-value="dinner">저녁</span>
+                    <span class="option-tag" data-category="time" data-value="snack">간식/야식</span>
+                </div>
+            </div>
             
-            <a href="https://www.twitter.com" class="site-card">
-                <img src="https://abs.twimg.com/responsive-web/client-web/icon-ios.b1fc7275.png" alt="Twitter" class="site-icon">
-                <div class="site-name">Twitter</div>
-                <div class="site-description">Microblogging</div>
-            </a>
-            
-            <a href="https://www.amazon.com" class="site-card">
-                <img src="https://www.amazon.com/favicon.ico" alt="Amazon" class="site-icon">
-                <div class="site-name">Amazon</div>
-                <div class="site-description">Online shopping</div>
-            </a>
-            
-            <a href="https://www.wikipedia.org" class="site-card">
-                <img src="https://www.wikipedia.org/static/images/wikipedia-logo-v2.png" alt="Wikipedia" class="site-icon">
-                <div class="site-name">Wikipedia</div>
-                <div class="site-description">Free encyclopedia</div>
-            </a>
-            
-            <a href="https://www.reddit.com" class="site-card">
-                <img src="https://www.redditstatic.com/desktop2x/img/favicon/apple-icon-180x180.png" alt="Reddit" class="site-icon">
-                <div class="site-name">Reddit</div>
-                <div class="site-description">Social news</div>
-            </a>
-            
-            <a href="https://www.linkedin.com" class="site-card">
-                <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" alt="LinkedIn" class="site-icon">
-                <div class="site-name">LinkedIn</div>
-                <div class="site-description">Professional network</div>
-            </a>
-            
-            <a href="https://www.netflix.com" class="site-card">
-                <img src="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2023.png" alt="Netflix" class="site-icon">
-                <div class="site-name">Netflix</div>
-                <div class="site-description">Streaming service</div>
-            </a>
-            
-            <a href="https://www.instagram.com" class="site-card">
-                <img src="https://static.cdninstagram.com/rsrc.php/v3/yI/r/VsNE-OHk_8a.png" alt="Instagram" class="site-icon">
-                <div class="site-name">Instagram</div>
-                <div class="site-description">Photo sharing</div>
-            </a>
+            <div class="option-group">
+                <h3>👥 식사 인원</h3>
+                <div class="option-tags">
+                    <span class="option-tag" data-category="people" data-value="alone">혼밥</span>
+                    <span class="option-tag" data-category="people" data-value="couple">커플</span>
+                    <span class="option-tag" data-category="people" data-value="family">가족</span>
+                    <span class="option-tag" data-category="people" data-value="friends">친구들</span>
+                    <span class="option-tag" data-category="people" data-value="business">비즈니스</span>
+                </div>
+            </div>
         </div>
         
-        <footer>
-            <p>© 2023 Portal Gateway. All rights reserved.</p>
-        </footer>
+        <div class="recommend-section">
+            <button class="recommend-btn" id="recommendBtn" onclick="recommendFood()">
+                🎯 맞춤 음식 추천받기!
+            </button>
+            <div class="loading" id="loading">
+                🔍 당신의 취향을 분석하는 중<span class="loading-dots"></span>
+            </div>
+        </div>
+        
+        <div class="result-section" id="resultSection">
+            <div class="result-card" id="resultCard">
+                <!-- 결과가 여기에 표시됩니다 -->
+            </div>
+            <button class="recommend-btn" onclick="recommendFood()" style="background: linear-gradient(135deg, #48cae4, #0077b6); margin-top: 20px;">
+                🔄 다른 음식 추천받기
+            </button>
+        </div>
     </div>
 
     <script>
-        document.getElementById('searchBox').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const searchTerm = this.value.trim();
-                if (searchTerm) {
-                    window.open(`https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`, '_blank');
+        const foodDatabase = {
+            korean: {
+                spicy: {
+                    meat: [
+                        {name: "김치찌개", emoji: "🍲", description: "매콤하고 진한 국물이 일품인 대표 한식", tags: ["국물", "매운맛", "고기"]},
+                        {name: "불닭볶음면", emoji: "🍜", description: "매운맛의 정점! 중독성 강한 볶음면", tags: ["매운맛", "면류", "간편식"]},
+                        {name: "떡갈비", emoji: "🥩", description: "매콤달콤한 양념의 부드러운 갈비", tags: ["고기", "매운맛", "달콤함"]}
+                    ],
+                    seafood: [
+                        {name: "매운탕", emoji: "🍲", description: "신선한 생선으로 끓인 얼큰한 탕", tags: ["해산물", "국물", "매운맛"]},
+                        {name: "낙곱새", emoji: "🦑", description: "낙지+곱창+새우의 매콤한 조합", tags: ["해산물", "매운맛", "술안주"]}
+                    ],
+                    vegetable: [
+                        {name: "비빔밥", emoji: "🍚", description: "각종 나물과 고추장의 조화", tags: ["채소", "건강", "매운맛"]},
+                        {name: "콩나물국밥", emoji: "🍲", description: "시원하고 칼칼한 해장용 최고", tags: ["채소", "국물", "해장"]}
+                    ]
+                },
+                mild: {
+                    meat: [
+                        {name: "갈비탕", emoji: "🍖", description: "깔끔하고 담백한 사골 국물", tags: ["고기", "국물", "담백함"]},
+                        {name: "삼계탕", emoji: "🍗", description: "몸보신용 완벽한 보양식", tags: ["고기", "건강", "보양"]},
+                        {name: "불고기", emoji: "🥩", description: "달콤한 양념의 부드러운 소고기", tags: ["고기", "달콤함", "전통"]}
+                    ]
+                }
+            },
+            japanese: {
+                mild: {
+                    seafood: [
+                        {name: "초밥", emoji: "🍣", description: "신선한 회와 밥의 완벽한 조화", tags: ["해산물", "신선함", "고급"]},
+                        {name: "우동", emoji: "🍜", description: "따뜻하고 부드러운 국물 면", tags: ["면류", "국물", "담백함"]},
+                        {name: "연어덮밥", emoji: "🍚", description: "부드러운 연어와 밥의 조합", tags: ["해산물", "밥류", "건강"]}
+                    ],
+                    meat: [
+                        {name: "돈카츠", emoji: "🍖", description: "바삭한 튀김옷의 두툼한 돼지고기", tags: ["고기", "튀김", "바삭함"]},
+                        {name: "규동", emoji: "🍚", description: "달콤한 소고기 덮밥", tags: ["고기", "밥류", "달콤함"]}
+                    ]
+                }
+            },
+            western: {
+                savory: {
+                    meat: [
+                        {name: "스테이크", emoji: "🥩", description: "완벽하게 구워진 프리미엄 소고기", tags: ["고기", "고급", "감칠맛"]},
+                        {name: "파스타", emoji: "🍝", description: "다양한 소스와 면의 조화", tags: ["면류", "감칠맛", "이탈리안"]},
+                        {name: "리조또", emoji: "🍚", description: "크리미하고 진한 이탈리안 밥", tags: ["밥류", "크림", "고급"]}
+                    ]
+                }
+            },
+            fast: {
+                salty: {
+                    meat: [
+                        {name: "햄버거", emoji: "🍔", description: "간편하고 맛있는 패스트푸드의 왕", tags: ["패스트푸드", "간편", "고기"]},
+                        {name: "치킨", emoji: "🍗", description: "바삭바삭 황금빛 프라이드 치킨", tags: ["고기", "튀김", "간식"]},
+                        {name: "피자", emoji: "🍕", description: "치즈와 토핑이 가득한 이탈리안", tags: ["치즈", "간편", "파티"]}
+                    ]
                 }
             }
+        };
+
+        const preferences = {
+            cuisine: null,
+            taste: null,
+            ingredient: null,
+            price: null,
+            time: null,
+            people: null
+        };
+
+        // 옵션 선택 이벤트
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('option-tag')) {
+                const category = e.target.getAttribute('data-category');
+                const value = e.target.getAttribute('data-value');
+                
+                // 같은 카테고리의 다른 선택 해제
+                document.querySelectorAll(`[data-category="${category}"]`).forEach(tag => {
+                    tag.classList.remove('selected');
+                });
+                
+                // 현재 선택 활성화
+                e.target.classList.add('selected');
+                preferences[category] = value;
+                
+                // 스플래시 효과
+                createSplash(e.clientX, e.clientY);
+            }
         });
+
+        function createSplash(x, y) {
+            const splash = document.createElement('div');
+            splash.style.position = 'fixed';
+            splash.style.left = x + 'px';
+            splash.style.top = y + 'px';
+            splash.style.width = '20px';
+            splash.style.height = '20px';
+            splash.style.background = `radial-gradient(circle, hsl(${Math.random() * 360}, 70%, 60%), transparent)`;
+            splash.style.borderRadius = '50%';
+            splash.style.pointerEvents = 'none';
+            splash.style.animation = 'splash 0.6s ease-out forwards';
+            splash.style.zIndex = '1000';
+            
+            document.body.appendChild(splash);
+            setTimeout(() => {
+                if (document.body.contains(splash)) {
+                    document.body.removeChild(splash);
+                }
+            }, 600);
+        }
+
+        function createParticles() {
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * window.innerWidth + 'px';
+                    particle.style.top = window.innerHeight + 'px';
+                    particle.style.width = Math.random() * 10 + 5 + 'px';
+                    particle.style.height = particle.style.width;
+                    particle.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
+                    particle.style.animationDelay = Math.random() * 2 + 's';
+                    
+                    document.body.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        if (document.body.contains(particle)) {
+                            document.body.removeChild(particle);
+                        }
+                    }, 6000);
+                }, i * 200);
+            }
+        }
+
+        function findBestMatch() {
+            const { cuisine, taste, ingredient } = preferences;
+            
+            // 기본값 설정
+            const safeCuisine = cuisine || 'korean';
+            const safeTaste = taste || Object.keys(foodDatabase[safeCuisine])[0];
+            const safeIngredient = ingredient || Object.keys(foodDatabase[safeCuisine][safeTaste])[0];
+            
+            // 해당 조건에 맞는 음식 찾기
+            if (foodDatabase[safeCuisine] && 
+                foodDatabase[safeCuisine][safeTaste] && 
+                foodDatabase[safeCuisine][safeTaste][safeIngredient]) {
+                const foods = foodDatabase[safeCuisine][safeTaste][safeIngredient];
+                return foods[Math.floor(Math.random() * foods.length)];
+            }
+            
+            // 매칭되는 것이 없으면 랜덤 추천
+            const allFoods = [];
+            Object.values(foodDatabase).forEach(cuisineData => {
+                Object.values(cuisineData).forEach(tasteData => {
+                    Object.values(tasteData).forEach(foods => {
+                        allFoods.push(...foods);
+                    });
+                });
+            });
+            
+            return allFoods[Math.floor(Math.random() * allFoods.length)] || {
+                name: "김치찌개",
+                emoji: "🍲",
+                description: "매콤하고 진한 국물이 일품인 대표 한식",
+                tags: ["한식", "매운맛", "국물"]
+            };
+        }
+
+        function recommendFood() {
+            const loading = document.getElementById('loading');
+            const resultSection = document.getElementById('resultSection');
+            const resultCard = document.getElementById('resultCard');
+            const btn = document.getElementById('recommendBtn');
+            
+            // 로딩 시작
+            loading.classList.add('show');
+            btn.disabled = true;
+            resultSection.classList.remove('show');
+            
+            // 파티클 효과
+            createParticles();
+            
+            setTimeout(() => {
+                loading.classList.remove('show');
+                btn.disabled = false;
+                
+                // 최적의 음식 찾기
+                const recommendedFood = findBestMatch();
+                
+                // 선택된 옵션들 수집
+                const selectedOptions = [];
+                Object.entries(preferences).forEach(([key, value]) => {
+                    if (value) {
+                        const element = document.querySelector(`[data-category="${key}"][data-value="${value}"]`);
+                        if (element) {
+                            selectedOptions.push(element.textContent);
+                        }
+                    }
+                });
+                
+                // 결과 표시
+                resultCard.innerHTML = `
+                    <div class="result-emoji">${recommendedFood.emoji}</div>
+                    <div class="result-name">${recommendedFood.name}</div>
+                    <div class="result-description">${recommendedFood.description}</div>
+                    <div class="result-tags">
+                        ${recommendedFood.tags.map(tag => `<span class="result-tag">${tag}</span>`).join('')}
+                        ${selectedOptions.map(option => `<span class="result-tag">✓ ${option}</span>`).join('')}
+                    </div>
+                `;
+                
+                resultSection.classList.add('show');
+                
+                // 추가 스플래시 효과
+                setTimeout(() => {
+                    for (let i = 0; i < 3; i++) {
+                        setTimeout(() => {
+                            createSplash(
+                                Math.random() * window.innerWidth,
+                                Math.random() * window.innerHeight
+                            );
+                        }, i * 200);
+                    }
+                }, 300);
+                
+            }, 2000);
+        }
+
+        // CSS 애니메이션 추가
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes splash {
+                0% {
+                    transform: scale(0);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(15);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // 초기 파티클 생성
+        setInterval(createParticles, 10000);
     </script>
 </body>
 </html>
