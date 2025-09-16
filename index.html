@@ -1,0 +1,174 @@
+<html>
+<head>
+    <title>나의 첫 페이지</title>
+    <style>
+        /* 전체 스타일 */
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        /* 제목 스타일 */
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+
+        /* 링크 스타일 */
+        .atag_list a {
+            display: inline-block;
+            margin: 5px 10px 5px 0;
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .atag_list a:hover {
+            background-color: #2980b9;
+        }
+
+        /* 이미지 스타일 */
+        img {
+            display: block;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* 목록 스타일 */
+        .content1 {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        ol, ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        
+        /* 추가 스타일 */
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .content1 ol, .content1 ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .content1 li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        .content1 li:last-child {
+            border-bottom: none;
+        }
+        .h1_02 { color:#1a73e8;}
+    </style>
+</head>
+<body>
+    <h1>내용 부분1</h1>
+    <h2>내용 부분2</h2>
+    <p> 상세 내용 </p>
+    <div class="atag_list">    
+        <a href="https://www.w3schools.com/">w3 school</a>
+        <a href="https://www.w3schools.com/" target="_blank">w3 school-새탭에서</a>
+        <a href="https://www.google.com">구글</a>
+        <a href="https://www.google.com" target="_blank">구글-새탭에서</a><br>
+    </div>
+
+    <img src="https://images.unsplash.com/photo-1757877942839-e3ed20a6c8c4?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="400" height="400">
+    <div class="atag_list">    
+        <a href="https://www.w3schools.com/">w3 school</a>
+        <a href="https://www.w3schools.com/" target="_blank">w3 school-새탭에서</a>
+    </div>
+
+    <h3 class="h1_02">내용 부분3</h3>
+        <div class="content1">
+        <ol>
+            <li>TODO 1</li>
+            <li>TODO 2</li>
+            <li>TODO 3</li>
+        </ol>
+    </div>
+    <div class="content1">
+        <ul>
+            <li>TODO 1</li>
+            <li>TODO 2</li>
+            <li>TODO 3</li>
+        </ul>
+    </div>
+
+    <script>
+        // 페이지 로드 시 알림 표시
+        window.onload = function() {
+            alert('페이지가 로드되었습니다!');
+        };
+
+        // h1 제목 클릭 시 배경색 변경
+        document.querySelector('h1').addEventListener('click', function() {
+            this.style.backgroundColor = '#e6f7ff';
+            setTimeout(() => {
+                this.style.backgroundColor = '';
+            }, 1000);
+        });
+
+        // 카운터 버튼 추가
+        const counter = document.createElement('div');
+        counter.style.textAlign = 'center';
+        counter.style.margin = '20px 0';
+        counter.innerHTML = `
+            <button id="counterBtn" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+                클릭 횟수: <span id="count">0</span>
+            </button>
+        `;
+        document.body.appendChild(counter);
+
+        // 카운터 기능
+        let count = 0;
+        document.getElementById('counterBtn').addEventListener('click', function() {
+            count++;
+            document.getElementById('count').textContent = count;
+            
+            // 5의 배수일 때 축하 메시지
+            if (count % 5 === 0) {
+                alert(count + '번 클릭하셨습니다! 대단해요!');
+            }
+        });
+    </script>
+</body>
+</html>
